@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #EADBEF;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 3%;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.login_button{
+    padding: 9px 25px;
+    background-color: #FFFFFF;
+    border-color: #7000FF;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.login_button:active{
+    
+}
+
+.register_button{
+    padding: 9px 25px;
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
