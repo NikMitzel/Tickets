@@ -1,36 +1,69 @@
 *{
-    box-sizing: border-box;
+    font-family: 'Inter';
+    color: #7000FF;
+    border-radius: 6px;
+}
+
+body{
     margin: 0;
     padding: 0;
+    display: flex;
     background-color: #EADBEF;
 }
+
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 3%;
+    padding-top: 10px;
+    padding-right: 1%;
 }
 
-.logo {
+.header_logo{
+    margin: 0;
     cursor: pointer;
+    height: 80px;
+    width: auto;
 }
 
-.login_button{
-    padding: 9px 25px;
+.header_registerbutton{
+    padding: 9px 15px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    color: #CDA7FF;
+    border: none;
+    cursor: pointer;
+    transition: transform;
+    transition-duration: 0.2s;
+}
+.header_registerbutton:hover{
+    transform:translate(-2px,-2px)
+}
+
+
+.header_loginbutton{
+    padding: 9px 15px;
     background-color: #FFFFFF;
     border-color: #7000FF;
-    border-radius: 6px;
+    border-style: solid;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
+    transition: transform;
+    transition-duration: 0.2s;
 }
-.login_button:active{
-    
+.header_loginbutton:hover{
+    transform:translate(-2px,-2px)
+}
+.header_loginbutton_icon{
+    margin-right: 4px;
+    background-color: white;
+    border-radius: 0;
+    height: 10px;
+    width: auto;
 }
 
-.register_button{
-    padding: 9px 25px;
-    background-color: #FFFFFF;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+
+.login_model::backdrop{
+    backdrop-filter: blur(4px);
 }

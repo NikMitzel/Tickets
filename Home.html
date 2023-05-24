@@ -1,21 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
-        <img class="logo" src="src\Icon.png" alt="logo">
-    
+        <img class="header_logo" src="src\Icon.png" alt="header_logo">
+
         <div>
-            <button class="register_button">REGISTER</button>
-            <button class="login_button">LOGIN</button>
+            <!--Register Button-->
+            <button class="header_registerbutton">Register</button>
+
+
+            <!--login Button-->
+            <button data-open-model-login class="header_loginbutton">
+                <img class="header_loginbutton_icon" src="src\Login Icon.png" alt="header_loginbutton_icon">
+                Login
+            </button>
+            <dialog data-model-login class="login_model">
+                
+            </dialog>
+            <script>
+                const openButton = document.querySelector("[data-open-model-login]")
+                const model = document.querySelector("[data-model-login]")
+                openButton.addEventListener("click", () => {
+                    model.showModal()
+                })
+                model.addEventListener("click", e => {
+                    const dialogDimensions = model.getBoundingClientRect()
+                    if (
+                        e.clientX < dialogDimensions.left ||
+                        e.clientX > dialogDimensions.right ||
+                        e.clientY < dialogDimensions.top ||
+                        e.clientY > dialogDimensions.bottom
+                    ) {
+                        model.close()
+                    }
+                })
+            </script>
+
         </div>
-        
     </header>
+
 </body>
+
 </html>
