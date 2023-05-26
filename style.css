@@ -65,6 +65,8 @@ header {
 
 /*Dialogs*/
 dialog{
+    margin-top: 40px;
+    padding: 40px;
     border: none;
 }
 dialog::backdrop{
