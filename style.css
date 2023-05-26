@@ -1,12 +1,39 @@
+/*
+Strucktur
+h_ : header
+d_ : dialogs
+f_  : fotter
+*/
 *{
     font-family: 'Inter';
     color: #7000FF;
     border-radius: 6px;
+    user-select: none;
 }
+
+.hidden{
+    display: none;
+}
+
 body{
     margin: 0;
     padding: 0;
     background-color: #EADBEF;
+}
+
+input {
+    font-size: 130%;
+    padding: 10px;
+    background-color: #F4F4F4;
+    border: none;
+    margin: 10px;
+    box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.25);
+    user-select: None; 
+    transition: box-shadow 0.3s;
+} 
+input:focus{
+    outline: none;
+    box-shadow: inset 0px -3px 2px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -15,83 +42,210 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 10px;
+    margin-top: 10px;
 }
 
-.header_logo{
+.h_logo{
     margin: 0;
     cursor: pointer;
     height: 80px;
     width: auto;
 }
 
-.header_registerbutton{
-    margin-right: 5cpx;
+.h_myticketbutton{
+    text-decoration: none;
+}
+
+.h_accountbutton{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #EADBEF;
+    border: none;
+    font-size: 110%;
+    margin-right: 10px;
+}
+.h_name{
+    margin: 0;
+    margin-right: 10px;
+}
+
+.h_registerbutton{
+    font-size: 110%;
+    margin-right: 5px;
     padding: 9px 15px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     color: #CDA7FF;
     border: none;
     cursor: pointer;
-    transition: transform;
-    transition-duration: 0.2s;
+    transition: box-shadow 0.3s;
 }
-.header_registerbutton:hover{
-    transform:translate(-2px,-2px)
+.h_registerbutton:hover{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.h_registerbutton:active{
+    box-shadow: none;
 }
 
-
-.header_loginbutton{
+.h_loginbutton{
+    font-size: 110%;
     margin-right: 10px;
     padding: 9px 15px;
     background-color: #FFFFFF;
     border-color: #7000FF;
     border-style: solid;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
-    transition: transform;
-    transition-duration: 0.2s;
+    transition: box-shadow 0.3s;
 }
-.header_loginbutton:hover{
-    transform:translate(-2px,-2px)
+.h_loginbutton:hover{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.header_loginbutton_icon{
+.h_loginbutton:active{
+    box-shadow: none;
+}
+.h_loginbuttonicon{
     margin-right: 4px;
     background-color: white;
     border-radius: 0;
-    height: 10px;
+    height: 15px;
     width: auto;
 }
+
 
 /*Dialogs*/
 dialog{
     margin-top: 40px;
-    padding: 40px 50px;
+    padding: 40px 30px;
     border: none;
+    padding-bottom: 20px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 dialog::backdrop{
     backdrop-filter: blur(4px);
 }
 
-.centertext{
+.d_title{
     text-align: center;
-    padding-bottom: 15px;
+    margin-bottom: 15px;
+    font-size: 170%
 }
-input {
-    width: 85%;
+.d_dateselect{
+    width: 89%;
+}
+.d_submit{
+    width: 94%;
     padding: 10px;
-    background-color: #F4F4F4;
-    border: none;
-    margin: 10px;
-    box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.25);
-} 
-input:focus{
-    outline: none;
-}
-.submit{
-    width: 85%;
+    margin-top: 20px;
     background-color: #7000FF;
     color: white;
     box-shadow: none;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.d_submit:hover{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.d_submit:active{
+    box-shadow: none;
 }
 
+/*Body*/
+.title{
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-size: 500%;
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+.title2{
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-size: 500%;
+    margin-top: 0;
+}
+
+.b_main{
+    margin-left: 15px;
+}
+
+.b_dateselect{
+    background-color: white;
+    margin-left: 0;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.b_dateselect:focus{
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.b_tickets {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-between;
+    row-gap: 15px;
+}
+
+.b_ticket{
+    background-color: white;
+    flex: 1;
+    margin-right: 15px;
+    min-width: 500px;
+    height: 300px;
+}
+
+footer{
+    margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    bottom: 0%;
+    width: 100%;
+    border-radius: 0;
+    background-color: white;
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.f_text{
+    margin-left: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+
+/*responsive CSS for mobile Phone*/
+@media screen and (max-width: 600px) {
+    .h_logo{
+        height: 60px;
+    }
+    .h_loginbutton{
+        font-size: small;
+    }
+    .h_loginbuttonicon{
+        height: 10px;
+    }
+    .h_registerbutton{
+        font-size: small;
+    }
+    input{
+        font-size: 90%;
+    }
+    dialog{
+        margin-top: 20px;
+    }
+    .d_title{
+        font-size: 140%
+    }
+    .d_dateselect{
+        width: 85%;
+    }
+    
+    .b_ticket{
+        min-width: 200px;
+        height: 200px;
+    }
+    .title{
+        font-size: 300%;
+    }
+    .title2{
+        font-size: 300%;
+    }
+}
