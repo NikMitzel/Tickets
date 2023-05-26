@@ -66,13 +66,17 @@ header {
 /*Dialogs*/
 dialog{
     margin-top: 40px;
-    padding: 40px;
+    padding: 40px 50px;
     border: none;
 }
 dialog::backdrop{
     backdrop-filter: blur(4px);
 }
 
+.centertext{
+    text-align: center;
+    padding-bottom: 15px;
+}
 input {
     width: 85%;
     padding: 10px;
@@ -84,9 +88,10 @@ input {
 input:focus{
     outline: none;
 }
-.header-form-date-select{
-    
+.submit{
+    width: 85%;
+    background-color: #7000FF;
+    color: white;
+    box-shadow: none;
 }
-.register{
-    padding: 0;
-}
+
