@@ -5,148 +5,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="src\Icon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <title>Ticket - Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="HomeStyle.css">
 </head>
 
 <body>
-    <header>
-        <a href="Home.html"><img class="h_logo" src="src\Icon.png" href="src/Home"></a>
-        <div class="hidden">
-            <a class="h_myticketbutton" href="my_tickts.html">My Tickets</a>
-        </div>
-        <div>
-            <div class="hidden">
-                <button data-open-model-account class="h_accountbutton">
-                    <p class="h_name">[name]</p> <img src="src\Login Icon.png">
-                </button>
-                <dialog data-model-account>
-                    <div class="d_title">Account</div>
-                    <form>
-                        <div><input type="email" name="E-Mail" placeholder="Change E-Mail"></div>
-                        <div><input type="password" name="Passwort" placeholder="Change Passwort" minlength="8"></div>
-                        <div><input class="d_submit" type="submit" value="Update"></div>
-                    </form>
-                </dialog>
-                <script>
-                    const openButtonAccount = document.querySelector("[data-open-model-account]")
-                    const modelAccount = document.querySelector("[data-model-account]")
-                    openButtonAccount.addEventListener("click", () => {
-                        modelAccount.showModal()
-                    })
-                    modelAccount.addEventListener("click", e => {
-                        const dialogDimensions = modelAccount.getBoundingClientRect()
-                        if (
-                            e.clientX < (dialogDimensions.left - 80) ||
-                            e.clientX > dialogDimensions.right ||
-                            e.clientY < dialogDimensions.top ||
-                            e.clientY > dialogDimensions.bottom
-                        ) {
-                            modelLmodelAccountogin.close()
-                        }
-                    })
-                </script>
-            </div>
+    <div class="outercontainer">
+        <div class="content">
+            <header>
+                <a href="Home.html"><img class="h_logo" src="src\Icon.png" href="src/Home"></a>
+                <div class="hidden">
+                    <a class="h_myticketbutton" href="my_tickts.html">My Tickets</a>
+                </div>
+                <div>
+                    <div class="hidden">
+                        <button data-open-model-account class="h_accountbutton">
+                            <p class="h_name">[name]</p> <img src="src\Login Icon.png">
+                        </button>
+                        <dialog data-model-account>
+                            <div class="d_title">Account</div>
+                            <form>
+                                <div><input type="email" name="E-Mail" placeholder="Change E-Mail"></div>
+                                <div><input type="password" name="Passwort" placeholder="Change Passwort" minlength="8">
+                                </div>
+                                <div><input class="d_submit" type="submit" value="Update"></div>
+                            </form>
+                        </dialog>
+                        <script>
+                            const openButtonAccount = document.querySelector("[data-open-model-account]")
+                            const modelAccount = document.querySelector("[data-model-account]")
+                            openButtonAccount.addEventListener("click", () => {
+                                modelAccount.showModal()
+                            })
+                            modelAccount.addEventListener("click", e => {
+                                const dialogDimensions = modelAccount.getBoundingClientRect()
+                                if (
+                                    e.clientX < (dialogDimensions.left - 80) ||
+                                    e.clientX > dialogDimensions.right ||
+                                    e.clientY < dialogDimensions.top ||
+                                    e.clientY > dialogDimensions.bottom
+                                ) {
+                                    modelLmodelAccountogin.close()
+                                }
+                            })
+                        </script>
+                    </div>
+                    <div>
+                        <!--Register Button-->
+                        <button data-open-model-register class="h_registerbutton">Register</button>
+                        <dialog data-model-register>
+                            <div class="d_title">Register</div>
+                            <form>
+                                <div><input type="text" name="Name" placeholder="Name"></div>
+                                <div><input class="d_dateselect" type="text" placeholder="Bithdate" onfocus="(this.type='date')"></div>
+                                <div><input type="email" name="E-Mail" placeholder="E-Mail"></div>
+                                <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
+                                <div><input class="d_submit" type="submit" value="Register"></div>
+                            </form>
+                        </dialog>
+
+                        <!--login Button-->
+                        <button data-open-model-login class="h_loginbutton">
+                            <img class="h_loginbuttonicon" src="src\Login Icon.png" ">
+                            Login
+                        </button>
+                        <dialog data-model-login>
+                            <div class=" d_title">Login</div>
+                            <form>
+                                <div><input type="email" name="E-Mail" placeholder="E-Mail"></div>
+                                <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
+                                <div><input class="d_submit" type="submit" value="Login"></div>
+                            </form>
+                        </dialog>
+                        <script>
+                            const openButtonLogin = document.querySelector("[data-open-model-login]")
+                            const modelLogin = document.querySelector("[data-model-login]")
+                            const changeButtonRegister = document.querySelector("[data-open-close-model-register]")
+                            const openButtonRegister = document.querySelector("[data-open-model-register]")
+                            const modelRegister = document.querySelector("[data-model-register]")
+                            const changeButtonLogin = document.querySelector("[data-open-close-model-login]")
+                            openButtonLogin.addEventListener("click", () => {
+                                modelLogin.showModal()
+                            })
+                            modelLogin.addEventListener("click", e => {
+                                const dialogDimensions = modelLogin.getBoundingClientRect()
+                                if (
+                                    e.clientX < (dialogDimensions.left - 80) ||
+                                    e.clientX > dialogDimensions.right ||
+                                    e.clientY < dialogDimensions.top ||
+                                    e.clientY > dialogDimensions.bottom
+                                ) {
+                                modelLogin.close()
+                                }
+                            })
+
+                            openButtonRegister.addEventListener("click", () => {
+                                modelRegister.showModal()
+                            })
+                            modelRegister.addEventListener("click", e => {
+                                const dialogDimensions = modelRegister.getBoundingClientRect()
+                                if (
+                                    e.clientX < dialogDimensions.left - 80 ||
+                                    e.clientX > dialogDimensions.right ||
+                                    e.clientY < dialogDimensions.top ||
+                                    e.clientY > dialogDimensions.bottom
+                                ) {
+                                    modelRegister.close()
+                                }
+                            })
+                        </script>
+                    </div>
+                </div>
+            </header>
+
             <div>
-                <!--Register Button-->
-                <button data-open-model-register class="h_registerbutton">Register</button>
-                <dialog data-model-register>
-                    <div class="d_title">Register</div>
-                    <form>
-                        <div><input type="text" name="Name" placeholder="Name"></div>
-                        <div><input class="d_dateselect" type="text" placeholder="Bithdate"
-                                onfocus="(this.type='date')"></div>
-                        <div><input type="email" name="E-Mail" placeholder="E-Mail"></div>
-                        <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
-                        <div><input class="d_submit" type="submit" value="Register"></div>
-                    </form>
-                </dialog>
-
-                <!--login Button-->
-                <button data-open-model-login class="h_loginbutton">
-                    <img class="h_loginbuttonicon" src="src\Login Icon.png" ">
-                    Login
-                </button>
-                <dialog data-model-login>
-                    <div class=" d_title">Login
+                <p class="title">BOOK YOUR </p>
+                <p class="title2">TICKETS NOW </p>
             </div>
-            <form>
-                <div><input type="email" name="E-Mail" placeholder="E-Mail"></div>
-                <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
-                <div><input class="d_submit" type="submit" value="Login"></div>
-            </form>
-            <script>
-                const openButtonLogin = document.querySelector("[data-open-model-login]")
-                const modelLogin = document.querySelector("[data-model-login]")
-                const changeButtonRegister = document.querySelector("[data-open-close-model-register]")
-                const openButtonRegister = document.querySelector("[data-open-model-register]")
-                const modelRegister = document.querySelector("[data-model-register]")
-                const changeButtonLogin = document.querySelector("[data-open-close-model-login]")
-                openButtonLogin.addEventListener("click", () => {
-                    modelLogin.showModal()
-                })
-                modelLogin.addEventListener("click", e => {
-                    const dialogDimensions = modelLogin.getBoundingClientRect()
-                    if (
-                        e.clientX < (dialogDimensions.left - 80) ||
-                        e.clientX > dialogDimensions.right ||
-                        e.clientY < dialogDimensions.top ||
-                        e.clientY > dialogDimensions.bottom
-                    ) {
-                        modelLogin.close()
-                    }
-                })
 
-                openButtonRegister.addEventListener("click", () => {
-                    modelRegister.showModal()
-                })
-                modelRegister.addEventListener("click", e => {
-                    const dialogDimensions = modelRegister.getBoundingClientRect()
-                    if (
-                        e.clientX < dialogDimensions.left - 80 ||
-                        e.clientX > dialogDimensions.right ||
-                        e.clientY < dialogDimensions.top ||
-                        e.clientY > dialogDimensions.bottom
-                    ) {
-                        modelRegister.close()
-                    }
-                })
 
-            </script>
+            <div class="b_main">
+                <div><input class="b_dateselect" type="date"></div>
+                <div class="b_tickets">
+                    <div class="b_ticket">
 
-        </div>
-        </div>
-    </header>
+                    </div>
+                    <div class="b_ticket"></div>
+                    <div class="b_ticket"></div>
+                    <div class="b_ticket"></div>
+                    <div class="b_ticket"></div>
+                    <div class="b_ticket"></div>
 
-    <div>
-        <p class="title">BOOK YOUR </p>
-        <p class="title2">TICKETS NOW </p>
-    </div>
-
-    <div class="b_main">
-        <div><input class="b_dateselect" type="date"></div>
-        <div class="b_tickets">
-            <div class="b_ticket">
-                  
+                </div>
             </div>
-            <div class="b_ticket"></div>
-            <div class="b_ticket"></div>
-            <div class="b_ticket"></div>
-            <div class="b_ticket"></div>
-            <div class="b_ticket"></div>
+
 
         </div>
     </div>
 
 
-    <footer class="f_footer">
-        <a href="imprint.html" class="f_text">Imprint</a>
-        <a href="privacypolice.html" class="f_text">Privacy Policy</a>
+      
+    <footer>
+        <div>
+            <a href="imprint.html" class="f_text">Imprint</a>
+            <a href="privacypolice.html" class="f_text">Privacy Policy</a>
+        </div>
+        <div class="f_text">
+            © 2023
+        </div>
+        
     </footer>
-
 </body>
 
 </html>
