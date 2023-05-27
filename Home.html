@@ -1,163 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="src\Icon.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-    <title>Ticket - Home</title>
-    <link rel="stylesheet" href="CSS\HomeStyle.css">
-</head>
-
-<body>
-    <div id="outercontainer">
-        <div id="content">
-            <header>
-                <a href="Home.html"><img id="h_logo" src="src\Icon.png" href="src/Home"></a>
-                <div class="hidden">
-                    <a id="h_myticketbutton" href="my_tickts.html">My Tickets</a>
-                </div>
-                <div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" href="src\Icon.png" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+        <title>Ticket - Home</title>
+        <link rel="stylesheet" href="CSS\HomeStyle.css">
+    </head>
+    <body>
+        <div id="outercontainer">
+            <div id="content">
+                <header>
+                    <a href="Home.html"><img id="h_logo" src="src\Icon.png" href="src/Home"></a>
                     <div class="hidden">
-                        <button data-open-model-account id="h_accountbutton">
-                            <p id="h_name">[name]</p> <img src="src\Login Icon.png">
-                        </button>
-                        <dialog data-model-account>
-                            <div class="d_title">Account</div>
-                            <form>
-                                <div><input type="email" name="E-Mail" placeholder="Change E-Mail"></div>
-                                <div><input type="password" name="Passwort" placeholder="Change Passwort" minlength="8">
-                                </div>
-                                <div><input class="d_submit" type="submit" value="Update"></div>
-                            </form>
-                        </dialog>
-                        <script>
-                            const openButtonAccount = document.querySelector("[data-open-model-account]")
-                            const modelAccount = document.querySelector("[data-model-account]")
-                            openButtonAccount.addEventListener("click", () => {
-                                modelAccount.showModal()
-                            })
-                            modelAccount.addEventListener("click", e => {
-                                const dialogDimensions = modelAccount.getBoundingClientRect()
-                                if (
-                                    e.clientX < (dialogDimensions.left - 80) ||
-                                    e.clientX > dialogDimensions.right ||
-                                    e.clientY < dialogDimensions.top ||
-                                    e.clientY > dialogDimensions.bottom
-                                ) {
-                                    modelLmodelAccountogin.close()
-                                }
-                            })
-                        </script>
+                        <a id="h_myticketbutton" href="my_tickts.html">My Tickets</a>
                     </div>
                     <div>
-                        <!--Register Button-->
-                        <button data-open-model-register id="h_registerbutton">Register</button>
-                        <dialog data-model-register>
-                            <div class="d_title">Register</div>
-                            <form>
-                                <div><input type="text" name="Name" placeholder="Name"></div>
-                                <div><input id="d_dateselect" type="text" placeholder="Bithdate" onfocus="(this.type='date')"></div>
-                                <div><input type="email" name="E-Mail" placeholder="E-Mail"></div>
-                                <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
-                                <div><input class="d_submit" type="submit" value="Register"></div>
-                            </form>
-                        </dialog>
-
-                        <!--login Button-->
-                        <button data-open-model-login id="h_loginbutton">
-                            <img id="h_loginbuttonicon" src="src\Login Icon.png" ">
-                            Login
-                        </button>
-                        <dialog data-model-login>
-                            <div class=" d_title">Login</div>
-                            <form>
-                                <div><input type="email" name="E-Mail" placeholder="E-Mail"></div>
-                                <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
-                                <div><input class="d_submit" type="submit" value="Login"></div>
-                            </form>
-                        </dialog>
-                        <script>
-                            const openButtonLogin = document.querySelector("[data-open-model-login]")
-                            const modelLogin = document.querySelector("[data-model-login]")
-                            const changeButtonRegister = document.querySelector("[data-open-close-model-register]")
-                            const openButtonRegister = document.querySelector("[data-open-model-register]")
-                            const modelRegister = document.querySelector("[data-model-register]")
-                            const changeButtonLogin = document.querySelector("[data-open-close-model-login]")
-                            openButtonLogin.addEventListener("click", () => {
-                                modelLogin.showModal()
-                            })
-                            modelLogin.addEventListener("click", e => {
-                                const dialogDimensions = modelLogin.getBoundingClientRect()
-                                if (
-                                    e.clientX < (dialogDimensions.left - 80) ||
-                                    e.clientX > dialogDimensions.right ||
-                                    e.clientY < dialogDimensions.top ||
-                                    e.clientY > dialogDimensions.bottom
-                                ) {
-                                modelLogin.close()
-                                }
-                            })
-
-                            openButtonRegister.addEventListener("click", () => {
-                                modelRegister.showModal()
-                            })
-                            modelRegister.addEventListener("click", e => {
-                                const dialogDimensions = modelRegister.getBoundingClientRect()
-                                if (
-                                    e.clientX < dialogDimensions.left - 80 ||
-                                    e.clientX > dialogDimensions.right ||
-                                    e.clientY < dialogDimensions.top ||
-                                    e.clientY > dialogDimensions.bottom
-                                ) {
-                                    modelRegister.close()
-                                }
-                            })
-                        </script>
+                        <div class="hidden">
+                            <button data-open-model-account id="h_accountbutton">
+                                <p id="h_name">[name]</p> <img src="src\Login Icon.png">
+                            </button>
+                            <dialog data-model-account>
+                                <div class="d_title">Account</div>
+                                <form>
+                                    <div><input type="email" name="E-Mail" placeholder="Change E-Mail"></div>
+                                    <div><input type="password" name="Passwort" placeholder="Change Passwort" minlength="8"></div>
+                                    <div><input class="d_submit" type="submit" value="Update"></div>
+                                </form>
+                            </dialog>
+                            <script>
+                                const openButtonAccount = document.querySelector("[data-open-model-account]")
+                                const modelAccount = document.querySelector("[data-model-account]")
+                                openButtonAccount.addEventListener("click", () => {
+                                    modelAccount.showModal()
+                                })
+                                modelAccount.addEventListener("click", e => {
+                                    const dialogDimensions = modelAccount.getBoundingClientRect()
+                                    if (
+                                        e.clientX < (dialogDimensions.left - 80) ||
+                                        e.clientX > dialogDimensions.right ||
+                                        e.clientY < dialogDimensions.top ||
+                                        e.clientY > dialogDimensions.bottom
+                                    ) {
+                                        modelLmodelAccountogin.close()
+                                    }
+                                })
+                            </script>
+                        </div>
+                        <div>
+                            <!--Register Button-->
+                            <button data-open-model-register id="h_registerbutton">Register</button>
+                            <dialog data-model-register>
+                                <div class="d_title">Register</div>
+                                <form>
+                                    <div><input type="text" name="Name" placeholder="Name"></div>
+                                    <div><input id="d_dateselect" type="text" placeholder="Bithdate" onfocus="(this.type='date')"></div>
+                                    <div><input type="email" name="E-Mail" placeholder="E-Mail"></div>
+                                    <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
+                                    <div><input class="d_submit" type="submit" value="Register"></div>
+                                </form>
+                            </dialog>
+                            <!--login Button-->
+                            <button data-open-model-login id="h_loginbutton">
+                                <img id="h_loginbuttonicon" src="src\Login Icon.png" ">
+                                Login
+                            </button>
+                            <dialog data-model-login>
+                                <div class=" d_title">Login</div>
+                                <form>
+                                    <div><input type="email" name="E-Mail" placeholder="E-Mail"></div>
+                                    <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
+                                    <div><input class="d_submit" type="submit" value="Login"></div>
+                                </form>
+                            </dialog>
+                            <script>
+                                const openButtonLogin = document.querySelector("[data-open-model-login]")
+                                const modelLogin = document.querySelector("[data-model-login]")
+                                const changeButtonRegister = document.querySelector("[data-open-close-model-register]")
+                                const openButtonRegister = document.querySelector("[data-open-model-register]")
+                                const modelRegister = document.querySelector("[data-model-register]")
+                                const changeButtonLogin = document.querySelector("[data-open-close-model-login]")
+                                openButtonLogin.addEventListener("click", () => {
+                                    modelLogin.showModal()
+                                })
+                                modelLogin.addEventListener("click", e => {
+                                    const dialogDimensions = modelLogin.getBoundingClientRect()
+                                    if (
+                                        e.clientX < (dialogDimensions.left - 80) ||
+                                        e.clientX > dialogDimensions.right ||
+                                        e.clientY < dialogDimensions.top ||
+                                        e.clientY > dialogDimensions.bottom
+                                    ) {
+                                    modelLogin.close()
+                                    }
+                                })
+                                openButtonRegister.addEventListener("click", () => {
+                                    modelRegister.showModal()
+                                })
+                                modelRegister.addEventListener("click", e => {
+                                    const dialogDimensions = modelRegister.getBoundingClientRect()
+                                    if (
+                                        e.clientX < dialogDimensions.left - 80 ||
+                                        e.clientX > dialogDimensions.right ||
+                                        e.clientY < dialogDimensions.top ||
+                                        e.clientY > dialogDimensions.bottom
+                                    ) {
+                                        modelRegister.close()
+                                    }
+                                })
+                            </script>
+                        </div>
+                    </div>
+                </header>
+                <div>
+                    <p id="title">BOOK YOUR </p>
+                    <p id="title2">TICKETS NOW </p>
+                </div>
+                <div id="b_main">
+                    <div><input id="b_dateselect" type="date"></div>
+                    <div id="b_tickets">
+                        <div class="b_ticket"></div>
+                        <div class="b_ticket"></div>
+                        <div class="b_ticket"></div>
+                        <div class="b_ticket"></div>
+                        <div class="b_ticket"></div>
+                        <div class="b_ticket"></div>
+                        <div class="b_ticket"></div>
+                        <div class="b_ticket"></div>
+                        <div class="b_ticket"></div>
+                        <div class="b_ticket"></div>
                     </div>
                 </div>
-            </header>
-
+            </div>
+        </div>
+        <footer>
             <div>
-                <p id="title">BOOK YOUR </p>
-                <p id="title2">TICKETS NOW </p>
+                <a href="imprint.html" class="f_text">Imprint</a>
+                <a href="privacypolice.html" class="f_text">Privacy Policy</a>
             </div>
-
-
-            <div id="b_main">
-                <div><input id="b_dateselect" type="date"></div>
-                <div id="b_tickets">
-                    <div class="b_ticket"></div>
-                    <div class="b_ticket"></div>
-                    <div class="b_ticket"></div>
-                    <div class="b_ticket"></div>
-                    <div class="b_ticket"></div>
-                    <div class="b_ticket"></div>
-                    <div class="b_ticket"></div>
-                    <div class="b_ticket"></div>
-                    <div class="b_ticket"></div>
-                    <div class="b_ticket"></div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-
-
-      
-    <footer>
-        <div>
-            <a href="imprint.html" class="f_text">Imprint</a>
-            <a href="privacypolice.html" class="f_text">Privacy Policy</a>
-        </div>
-        <div class="f_text">
-            © 2023
-        </div>
-        
-    </footer>
-</body>
-
+            <div class="f_text">© 2023</div>
+        </footer>
+    </body>
 </html>
