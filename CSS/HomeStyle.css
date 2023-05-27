@@ -20,6 +20,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: #EADBEF;
+    background-image: url("../src/Background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
 }
 
 html,
@@ -46,7 +50,7 @@ header {
     margin-top: 10px;
 }
 
-.h_logo {
+#h_logo {
     margin: 0;
     cursor: pointer;
     height: 80px;
@@ -255,7 +259,11 @@ footer {
 
 /*responsive CSS for mobile Phone*/
 @media screen and (max-width: 600px) {
-    .h_logo {
+    body {
+        background-image: url("../src/BackgroundSmall.png");
+    }
+
+    #h_logo {
         height: 60px;
     }
 
