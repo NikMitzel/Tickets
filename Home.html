@@ -12,17 +12,17 @@
 </head>
 
 <body>
-    <div class="outercontainer">
-        <div class="content">
+    <div id="outercontainer">
+        <div id="content">
             <header>
                 <a href="Home.html"><img id="h_logo" src="src\Icon.png" href="src/Home"></a>
                 <div class="hidden">
-                    <a class="h_myticketbutton" href="my_tickts.html">My Tickets</a>
+                    <a id="h_myticketbutton" href="my_tickts.html">My Tickets</a>
                 </div>
                 <div>
                     <div class="hidden">
-                        <button data-open-model-account class="h_accountbutton">
-                            <p class="h_name">[name]</p> <img src="src\Login Icon.png">
+                        <button data-open-model-account id="h_accountbutton">
+                            <p id="h_name">[name]</p> <img src="src\Login Icon.png">
                         </button>
                         <dialog data-model-account>
                             <div class="d_title">Account</div>
@@ -54,12 +54,12 @@
                     </div>
                     <div>
                         <!--Register Button-->
-                        <button data-open-model-register class="h_registerbutton">Register</button>
+                        <button data-open-model-register id="h_registerbutton">Register</button>
                         <dialog data-model-register>
                             <div class="d_title">Register</div>
                             <form>
                                 <div><input type="text" name="Name" placeholder="Name"></div>
-                                <div><input class="d_dateselect" type="text" placeholder="Bithdate" onfocus="(this.type='date')"></div>
+                                <div><input id="d_dateselect" type="text" placeholder="Bithdate" onfocus="(this.type='date')"></div>
                                 <div><input type="email" name="E-Mail" placeholder="E-Mail"></div>
                                 <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
                                 <div><input class="d_submit" type="submit" value="Register"></div>
@@ -67,8 +67,8 @@
                         </dialog>
 
                         <!--login Button-->
-                        <button data-open-model-login class="h_loginbutton">
-                            <img class="h_loginbuttonicon" src="src\Login Icon.png" ">
+                        <button data-open-model-login id="h_loginbutton">
+                            <img id="h_loginbuttonicon" src="src\Login Icon.png" ">
                             Login
                         </button>
                         <dialog data-model-login>
@@ -121,17 +121,14 @@
             </header>
 
             <div>
-                <p class="title">BOOK YOUR </p>
-                <p class="title2">TICKETS NOW </p>
+                <p id="title">BOOK YOUR </p>
+                <p id="title2">TICKETS NOW </p>
             </div>
 
 
-            <div class="b_main">
-                <div><input class="b_dateselect" type="date"></div>
-                <div class="b_tickets">
-                    <div class="b_ticket">
-
-                    </div>
+            <div id="b_main">
+                <div><input id="b_dateselect" type="date"></div>
+                <div id="b_tickets">
                     <div class="b_ticket"></div>
                     <div class="b_ticket"></div>
                     <div class="b_ticket"></div>

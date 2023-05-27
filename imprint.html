@@ -15,7 +15,7 @@
             background-color: #EADBEF;
         }
 
-        .body {
+        #body {
             margin-left: 10px;
         }
 
@@ -24,16 +24,18 @@
             height: 100%;
         }
 
-        .outercontainer {
+        #outercontainer {
             min-height: 100%;
         }
 
-        .content {
+        #content {
             overflow: auto;
             padding-bottom: 40px;
         }
 
         footer {
+            display: flex;
+            justify-content: space-between;
             position: relative;
             height: 30px;
             margin-top: -40px;
@@ -45,26 +47,28 @@
         }
 
         .f_text {
-            margin-left: 20px;
             color: black;
+            margin-left: 20px;
+            margin-right: 20px;
             text-decoration: none;
+            transition: box-shadow 0.3s;
         }
 
         .f_text:hover {
             text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-            ;
         }
     </style>
 </head>
 
 <body>
-    <div class="outercontainer">
-        <div class="content">
+    <div id="outercontainer">
+        <div id="content">
             <header>
-                <a href="Home.html"><img class="h_logo" src="src\Icon.png" href="src/Home"></a>
+                <a href="Home.html"><img id="h_logo" src="src\Icon.png" href="src/Home"></a>
             </header>
-            <div class="body">
-                Please note that this is a fictional 1ebside and serves only as a school projeckt.<br />
+            <div id="body">
+                <h1>Imprint</h1>
+                Please note that this is a fictional webside and serves only as a school projeckt.<br />
                 <br />
                 Responsible for the content of this website according to § 5 TMG:<br />
                 <br />
@@ -99,9 +103,15 @@
             </div>
         </div>
     </div>
-    <footer class="f_footer">
-        <a href="imprint.html" class="f_text">Imprint</a>
-        <a href="privacypolice.html" class="f_text">Privacy Policy</a>
+    <footer>
+        <div>
+            <a href="imprint.html" class="f_text">Imprint</a>
+            <a href="privacypolice.html" class="f_text">Privacy Policy</a>
+        </div>
+        <div class="f_text">
+            © 2023
+        </div>
+
     </footer>
 </body>
 

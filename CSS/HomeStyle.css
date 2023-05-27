@@ -31,11 +31,11 @@ body {
     height: 100%;
 }
 
-.outercontainer {
+#outercontainer {
     min-height: 100%;
 }
 
-.content {
+#content {
     overflow: auto;
     padding-bottom: 40px;
 }
@@ -57,11 +57,11 @@ header {
     width: auto;
 }
 
-.h_myticketbutton {
+#h_myticketbutton {
     text-decoration: none;
 }
 
-.h_accountbutton {
+#h_accountbutton {
     display: flex;
     justify-content: center;
     cursor: pointer;
@@ -71,12 +71,12 @@ header {
     margin-right: 10px;
 }
 
-.h_name {
+#h_name {
     margin: 0;
     margin-right: 10px;
 }
 
-.h_registerbutton {
+#h_registerbutton {
     font-size: 110%;
     margin-right: 5px;
     padding: 9px 15px;
@@ -87,16 +87,14 @@ header {
     cursor: pointer;
     transition: box-shadow 0.3s;
 }
-
-.h_registerbutton:hover {
+#h_registerbutton:hover {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
-.h_registerbutton:active {
+#h_registerbutton:active {
     box-shadow: none;
 }
 
-.h_loginbutton {
+#h_loginbutton {
     font-size: 110%;
     margin-right: 10px;
     padding: 9px 15px;
@@ -107,16 +105,14 @@ header {
     cursor: pointer;
     transition: box-shadow 0.3s;
 }
-
-.h_loginbutton:hover {
+#h_loginbutton:hover {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
-.h_loginbutton:active {
+#h_loginbutton:active {
     box-shadow: none;
 }
 
-.h_loginbuttonicon {
+#h_loginbuttonicon {
     margin-right: 4px;
     background-color: white;
     border-radius: 0;
@@ -160,7 +156,7 @@ input:focus {
     font-size: 170%
 }
 
-.d_dateselect {
+#d_dateselect {
     width: 89%;
 }
 
@@ -183,7 +179,7 @@ input:focus {
 }
 
 /*Body*/
-.title {
+#title {
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
     font-size: 500%;
@@ -191,25 +187,32 @@ input:focus {
     margin-bottom: 0;
 }
 
-.title2 {
+#title2 {
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
     font-size: 500%;
     margin-top: 0;
 }
 
-.b_main {
+#b_main {
     margin-left: 15px;
     margin-bottom: 15px;
 }
 
-.b_dateselect {
+#b_dateselect {
     background-color: white;
     margin-left: 0;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
+#b_dateselect:hover{
+    cursor:pointer;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#b_dateselect:focus{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-.b_tickets {
+#b_tickets {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -267,15 +270,15 @@ footer {
         height: 60px;
     }
 
-    .h_loginbutton {
+    #h_loginbutton {
         font-size: small;
     }
 
-    .h_loginbuttonicon {
+    #h_loginbuttonicon {
         height: 10px;
     }
 
-    .h_registerbutton {
+    #h_registerbutton {
         font-size: small;
     }
 
@@ -300,11 +303,11 @@ footer {
         height: 200px;
     }
 
-    .title {
+    #title {
         font-size: 300%;
     }
 
-    .title2 {
+    #title2 {
         font-size: 300%;
     }
 }

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-    <title>Ticket - Imprint</title>
+    <title>Ticket - Privacy Police</title>
     <style>
         body {
             margin: 0;
@@ -15,7 +15,7 @@
             background-color: #EADBEF;
         }
 
-        .body {
+        #body {
             margin-left: 10px;
         }
 
@@ -24,16 +24,18 @@
             height: 100%;
         }
 
-        .outercontainer {
+        #outercontainer {
             min-height: 100%;
         }
 
-        .content {
+        #content {
             overflow: auto;
             padding-bottom: 40px;
         }
 
         footer {
+            display: flex;
+            justify-content: space-between;
             position: relative;
             height: 30px;
             margin-top: -40px;
@@ -45,26 +47,28 @@
         }
 
         .f_text {
-            margin-left: 20px;
             color: black;
+            margin-left: 20px;
+            margin-right: 20px;
             text-decoration: none;
+            transition: box-shadow 0.3s;
         }
 
         .f_text:hover {
             text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-            ;
         }
     </style>
 </head>
 
 <body>
-    <div class="outercontainer">
-        <div class="content">
+    <div id="outercontainer">
+        <div id="content">
             <header>
-                <a href="Home.html"><img class="h_logo" src="src\Icon.png" href="src/Home"></a>
+                <a href="Home.html"><img id="h_logo" src="src\Icon.png" href="src/Home"></a>
             </header>
-            <div class="body">
-                Please note that this is a fictional 1ebside and serves only as a school projeckt.<br /><br />
+            <div id="body">
+                <h1>Privacy Police</h1>
+                Please note that this is a fictional webside and serves only as a school projeckt.<br /><br />
                 We appreciate your interest in our website. The protection of your personal data is important to us.
                 Below,
                 we
@@ -139,9 +143,15 @@
         </div>
     </div>
 
-    <footer class="f_footer">
-        <a href="imprint.html" class="f_text">Imprint</a>
-        <a href="privacypolice.html" class="f_text">Privacy Policy</a>
+    <footer>
+        <div>
+            <a href="imprint.html" class="f_text">Imprint</a>
+            <a href="privacypolice.html" class="f_text">Privacy Policy</a>
+        </div>
+        <div class="f_text">
+            © 2023
+        </div>
+
     </footer>
 </body>
 
