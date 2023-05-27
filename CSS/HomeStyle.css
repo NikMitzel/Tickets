@@ -21,13 +21,13 @@ body {
     padding: 0;
     background-color: #EADBEF;
     background-image: url("../src/Background.png");
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
     overflow-x: hidden;
+    height: 100%;
 }
 
-html,
-body {
+html{
     height: 100%;
 }
 
@@ -183,7 +183,7 @@ input:focus {
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
     font-size: 500%;
-    margin-top: 50px;
+    margin-top: 100px;
     margin-bottom: 0;
 }
 
@@ -192,6 +192,7 @@ input:focus {
     text-align: center;
     font-size: 500%;
     margin-top: 0;
+    margin-bottom: 150px;
 }
 
 #b_main {
@@ -290,11 +291,11 @@ footer {
         margin-top: 20px;
     }
 
-    .d_title {
+    #d_title {
         font-size: 140%
     }
 
-    .d_dateselect {
+    #d_dateselect {
         width: 85%;
     }
 
@@ -305,9 +306,12 @@ footer {
 
     #title {
         font-size: 300%;
+        margin-top: 35px;
+        margin-bottom: 0;
     }
 
     #title2 {
         font-size: 300%;
+        margin-bottom: 40px;
     }
 }
