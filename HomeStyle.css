@@ -205,10 +205,6 @@ input:focus {
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
-.b_dateselect:focus {
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-}
-
 .b_tickets {
     display: flex;
     justify-content: space-between;
@@ -223,6 +219,12 @@ input:focus {
     margin-right: 15px;
     min-width: 500px;
     height: 300px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.3s;
+
+}
+.b_ticket:hover{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 /*footer*/
@@ -244,11 +246,11 @@ footer {
     margin-left: 20px;
     margin-right: 20px;
     text-decoration: none;
+    transition: box-shadow 0.3s;
 }
 
 .f_text:hover {
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-    ;
 }
 
 /*responsive CSS for mobile Phone*/
