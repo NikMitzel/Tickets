@@ -123,24 +123,44 @@
                             <p class="t_time">6:10</p>
                             <p class="t_date">dd /mm / yyy</p>
                             <p class="t_spots">3 spots left</p>
-                            <div>
+                            <section class="t_select">
                                 <select class="t_spotselect" name="number of people">
                                     <option value="">number of people</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                 </select>
-                                <button data-open-model-Book class="t_bookbutton">Book</button>
-                            </div>
+                                <button data-open-model-confirm-booking class="t_bookbutton">Book</button>
+                            </section>
+
+                        <dialog data-model-confirm-booking>
+                        <div class=" d_title">Book</div>
+                         <form>
+                            <p class="t_time">6:10</p>
+                            <p class="t_date">dd /mm / yyy</p>
+                            <p class="t_spots">Ticket for 2 Persons for - [Name]</p>
+                            <div><input class="d_submit" type="submit" value="Confirm Booking"></div>
+                        </form>
+                            </dialog>
+                        <script>
+                            const openButtonConfirmBooking = document.querySelector("data-open-model-confirm-booking]")
+                            const modelConfirmBooking = document.querySelector("[data-model-confirm-booking]")
+                            openButtonConfirmBooking.addEventListener("click", () => {
+                                modelConfirmBooking.showModal()
+                            })
+                            modelConfirmBooking.addEventListener("click", e => {
+                                const dialogDimensions = modelConfirmBooking.getBoundingClientRect()
+                                if (
+                                    e.clientX < (dialogDimensions.left - 80) ||
+                                    e.clientX > dialogDimensions.right ||
+                                    e.clientY < dialogDimensions.top ||
+                                    e.clientY > dialogDimensions.bottom
+                                ) {
+                                    modelConfirmBooking.close()
+                                }
+                            })
+                        </script>
                         </div>
-                        <div class="b_ticket"></div>
-                        <div class="b_ticket"></div>
-                        <div class="b_ticket"></div>
-                        <div class="b_ticket"></div>
-                        <div class="b_ticket"></div>
-                        <div class="b_ticket"></div>
-                        <div class="b_ticket"></div>
-                        <div class="b_ticket"></div>
                     </div>
                 </div>
             </div>
