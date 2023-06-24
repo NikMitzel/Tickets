@@ -11,19 +11,19 @@ public class DBManager {
         initConnection("localhost", 3306, "Ticketsystem", "root", "root8");
         try {
             connection.prepareStatement("CREATE TABLE IF NOT EXISTS user (" +
-                    "id INT AUTO_INCREMENT PRIMARY KEY," +
                     "name VARCHAR(50) NOT NULL," +
                     "birthdate DATE NOT NULL," +
-                    "email VARCHAR(50) NOT NULL," +
+                    "email VARCHAR(50) NOT NULL PRIMARY KEY," +
                     "password VARCHAR(50) NOT NULL" +
                     ");").executeUpdate();
             connection.prepareStatement("CREATE TABLE IF NOT EXISTS tickets (" +
                     "id INT AUTO_INCREMENT PRIMARY KEY," +
-                    "date_time DATETIME NOT NULL," +
+                    "date DATE NOT NULL," +
+                    "time TIME NOT NULL," +
                     "code VARCHAR(50) NOT NULL," +
-                    "user_id INT," +
-                    "FOREIGN KEY (user_id) REFERENCES user(id)" +
-                    "ON DELETE CASCADE" +
+                    "user_email  VARCHAR(50)," +
+                    "FOREIGN KEY (user_email) REFERENCES user(email)" +
+                    "ON DELETE SET NULL " +
                     ");").executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
