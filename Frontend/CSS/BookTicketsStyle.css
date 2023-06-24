@@ -220,7 +220,8 @@ input:focus {
 }
 .t_bookbutton:hover{
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-}s
+}
+
 
 
 /*footer*/
@@ -236,7 +237,6 @@ footer {
     clear: both;
     padding-top: 10px;
 }
-
 .f_text {
     color: black;
     margin-left: 20px;

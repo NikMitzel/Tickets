@@ -119,7 +119,7 @@ input:focus {
 
 
 /*footer*/
-footer {
+#footer {
     display: flex;
     justify-content: space-between;
     position: relative;
