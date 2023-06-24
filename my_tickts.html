@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" href="src\Icon.png" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+        <title>Ticket - Home</title>
+        <link rel="stylesheet" href="CSS\MyTicketsStyle.css">
+        
+    </head>
+    <body>
+        <div id="outercontainer">
+            <div id="content">
+                <header>
+                    <a href="BookTickets.html"><img id="h_logo" src="src\Icon.png" ></a>
+                    <div>
+                        <div >
+                            <button data-open-model-account id="h_accountbutton">
+                                <p id="h_name">[name]</p> <img src="src\Login Icon.png">
+                            </button>
+                            <dialog data-model-account>
+                                <div class="d_title">Account</div>
+                                <form>
+                                    <div><input type="text" name="Name" placeholder="Name"></div>
+                                    <div><input id="d_dateselect" type="text" placeholder="Bithdate" onfocus="(this.type='date')"></div>
+                                    <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
+                                    <div><input class="d_submit" type="submit" value="Register"></div>
+                                </form>
+                            </dialog>
+
+
+                            <script>
+                                const openButtonAccount = document.querySelector("[data-open-model-account]")
+                                const modelAccount = document.querySelector("[data-model-account]")
+                                openButtonAccount.addEventListener("click", () => {
+                                    modelAccount.showModal()
+                                })
+                                
+                                
+                                modelAccount.addEventListener("click", e => {
+                                    const dialogDimensions = modelAccount.getBoundingClientRect()
+                                    if (
+                                        e.clientX < (dialogDimensions.left - 80) ||
+                                        e.clientX > dialogDimensions.right ||
+                                        e.clientY < dialogDimensions.top ||
+                                        e.clientY > dialogDimensions.bottom
+                                    ) {
+                                        modelAccount.close()
+                                    }
+                                })
+                                
+                            </script>
+
+
+                        </div>
+                    </div>
+                </header>
+                <div>
+                    <p id="title">My Tickets </p>
+                </div>
+
+                <div id="b_main">
+                    <div id="b_tickets">
+                        <div id="b_ticket" class="b_ticket">
+                            <p class="t_time">6:10</p>
+                            <p class="t_date">dd /mm / yyy</p>
+                            <img class="t_QR-Code" src="https://chart.googleapis.com/chart?cht=qr&chl=DEINE_ZEICHENKETTE&chs=200x200" alt="QR-Code">
+                            <p class="t_code">skewow</p>
+                            <input class="t_cancelbutton" type="button" value="CANCEL">
+                        </div>
+                        <div id="b_ticket" class="b_ticket">
+                            <p class="t_time">6:10</p>
+                            <p class="t_date">dd /mm / yyy</p>
+                            <img class="t_QR-Code" src="https://chart.googleapis.com/chart?cht=qr&chl=DEINE_ZEICasdasdHENKETTE&chs=200x200" alt="QR-Code">
+                            <p class="t_code">skewow</p>
+                            <input class="t_cancelbutton" type="button" value="CANCEL">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div>
+                <a href="/ref/imprint.html" class="f_text">Imprint</a>
+                <a href="/ref/privacypolice.html" class="f_text">Privacy Policy</a>
+            </div>
+            <div class="f_text">© 2023</div>
+        </footer>
+    </body>
+</html>
