@@ -12,6 +12,8 @@ Wichtig ist, dass die ConnectorJ richtig eingebunden ist.
 ### Programm Starten
 #### V1 Consolenversion(JDK 18)
 Im ersten Sprint wurde eine Consolenversion Programmes erstellt, in welche die DB Logik schon vorhanden ist. Über ein kleines Consolenmenü kann der User hier das Programm nutzen: Dazu muss nur die Klasse _ConsoleVersion.java ausgeführt werden. (Die DB muss bereits laufen) Beispiel:
+
+
 ![Consol IMG](https://github.com/NikMitzel/Tickets/blob/main/imgV1.jpg?raw=true) 
 
 #### V2 Browser UI Version(JDK 17)
