@@ -22,7 +22,7 @@ body {
     padding: 0;
     background-color: #EADBEF;
     ;
-    background-image: url("../src/Background.png");
+    background-image: url("..\src\Background.png");
     background-size: 100%;
     background-repeat: no-repeat;
     overflow-x: hidden;
