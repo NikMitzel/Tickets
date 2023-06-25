@@ -2,6 +2,7 @@ package com.example.Ticketsystem.APIs;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -27,11 +28,13 @@ public class TicketService {
         TicketDAO.getInstance().DBCancelTicket(id);
     }
 
-    public void createTicket(Date date){
-        TicketDAO.getInstance().DBCreateSigelTicket(date);
-    }
-
     public void createTickets(Date start, Date end, int frequencyMin){
-        TicketDAO.getInstance().DBCreateTickets(start,end,frequencyMin);
+        Calendar calendarstart = Calendar.getInstance();
+        calendarstart.setTime(start);
+        calendarstart.add(Calendar.HOUR_OF_DAY, 2);
+        Calendar calendarend = Calendar.getInstance();
+        calendarend.setTime(end);
+        calendarend.add(Calendar.HOUR_OF_DAY, 2);
+        TicketDAO.getInstance().DBCreateTickets(calendarstart.getTime(),calendarend.getTime(),frequencyMin);
     }
 }

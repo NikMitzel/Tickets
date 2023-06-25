@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="src\Icon.png" type="image/x-icon">
+    <title>Add Tickets</title>
+</head>
+<body>
+    <form onsubmit="return false">
+        <div class=" title">Add Tickets GMT+2</div>
+        <div><input id="start" type="text" placeholder="StartDate" onfocus="(this.type='datetime-local')"></div>
+        <div><input id="end" type="text" placeholder="EndDate" onfocus="(this.type='datetime-local')"></div>
+        <div><input id="freqency" type="text" placeholder="freqency" onfocus="(this.type='number')"></div>
+        <div><button id="submit">Supmit</button></div>
+    </form>
+    <script>
+        let https2 = "http://localhost:8080/api/";
+        function send(method, apiSection, data, callback) {
+            let xhr = new XMLHttpRequest();
+            xhr.open(method, https2 + apiSection, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        callback(xhr.responseText)
+                    } else {
+                        callback(xhr.status)
+                    }
+                }
+            }
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(data);
+        }
+
+        document.getElementById('submit').onclick = function () {
+            addTickets();
+        };
+
+        function addTickets() {
+            var start = document.getElementById('start').value;
+            var end = document.getElementById('end').value;
+            var freqency = document.getElementById('freqency').value;
+            let data = {
+                "start": start,
+                "end": end,
+                "freqency": freqency,
+            }
+            send("POST", "ticket/add", JSON.stringify(data), function (response) {
+                window.open("Admin_addTickets.html", "_self")
+            })
+        }
+    </script>
+</body>
+</html>

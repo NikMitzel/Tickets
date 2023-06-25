@@ -1,0 +1,353 @@
+/*
+Strucktur
+h_ : header
+d_ : dialogs
+f_ : fotter
+t_ : ticket
+*/
+
+* {
+    font-family: 'Inter';
+    color: #7000FF;
+    border-radius: 6px;
+    user-select: none;
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EADBEF;;
+    background-image: url("../src/Background.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+html{
+    height: 100%;
+}
+
+#outercontainer {
+    background-color: #EADBEF;
+    min-height: 100%;
+}
+
+#content {
+    overflow: auto;
+    padding-bottom: 40px;
+}
+
+
+/*Header*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#h_logo {
+    margin: 0;
+    cursor: pointer;
+    height: 80px;
+    width: auto;
+}
+
+#h_myticketbutton {
+    font-size: larger;
+    text-decoration: none;
+}
+
+#h_accountbutton {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #EADBEF;
+    border: none;
+    font-size: 110%;
+    margin-right: 10px;
+}
+
+#h_name {
+    margin: 0;
+    margin-right: 10px;
+}
+
+
+/*Dialogs*/
+dialog {
+    margin-top: 40px;
+    padding: 40px 30px;
+    border: none;
+    padding-bottom: 20px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(4px);
+}
+
+input {
+    font-size: 130%;
+    padding: 10px;
+    background-color: #F4F4F4;
+    border: none;
+    margin: 10px;
+    box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.25);
+    user-select: None;
+    transition: box-shadow 0.3s;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: inset 0px -3px 2px rgba(0, 0, 0, 0.25);
+}
+
+#error{
+    color: red;
+    padding: 10px;
+}
+
+.d_title {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 170%
+}
+
+#d_dateselect {
+    width: 89%;
+}
+
+.d_submit {
+    font-size: 130%;
+    padding: 10px;
+    background-color: #F4F4F4;
+    border: none;
+    margin: 10px;
+    box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.25);
+    user-select: None;
+    transition: box-shadow 0.3s;
+    width: 94%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #7000FF;
+    color: white;
+    box-shadow: none;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.d_submit:hover {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.d_submit:active {
+    box-shadow: none;
+}
+
+/*Body*/
+#title {
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-size: 500%;
+    margin-top: 100px;
+    margin-bottom: 0;
+}
+
+#title2 {
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-size: 500%;
+    margin-top: 0;
+    margin-bottom: 150px;
+}
+
+#b_main {
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+#b_dateselect {
+    background-color: white;
+    margin-left: 0;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+#b_dateselect:hover{
+    cursor:pointer;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#b_dateselect:focus{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#b_tickets {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-between;
+    row-gap: 15px;
+}
+
+
+.b_ticket {
+    background-color: white;
+    flex: 1;
+    margin-right: 15px;
+    min-width: 500px;
+    height: 200px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    padding: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+/*ticket*/
+.t_time{
+    margin: 0;
+    font-size: 50px;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.t_date{
+    padding-left: 5px;
+    margin: 0;
+    font-size: 15px;
+}
+
+.t_bookbutton{
+    margin-top: 80px;
+    font-size: large;
+    padding: 10px;
+    width: 48%;
+    max-width: 400px;
+    background-color: #7000FF;
+    color: white;
+    border: none;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.3s;
+    align-self: flex-end;
+}
+.t_bookbutton:hover{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.t_cacelbutton{
+    margin-top: 30px;
+    font-size: large;
+    padding: 10px;
+    width: 20%;
+    max-width: 400px;
+    background-color: lightgray;
+    color: red;
+    border: none;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.3s;
+    align-self: flex-end;
+}
+.t_cacelbutton:hover{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.t_bookinfo{
+    margin: 0;
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size: 15px;
+    color: #000;
+}
+
+
+#no_ticket{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 200%;
+    color: gray;
+}
+
+
+/*footer*/
+footer {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 30px;
+    margin-top: -40px;
+    border-radius: 0;
+    background-color: white;
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+    clear: both;
+    padding-top: 10px;
+}
+.f_text {
+    color: black;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+}
+
+.f_text:hover {
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/*responsive CSS for mobile Phone*/
+@media screen and (max-width: 600px) {
+    body {
+        background-image: url("../src/BackgroundSmall.png");
+    }
+
+    #h_logo {
+        height: 60px;
+    }
+
+    input {
+        font-size: 90%;
+    }
+
+    dialog {
+        margin-top: 20px;
+    }
+
+    #d_title {
+        font-size: 140%
+    }
+
+    #d_dateselect {
+        width: 85%;
+    }
+
+    #title {
+        font-size: 300%;
+        margin-top: 35px;
+        margin-bottom: 0;
+    }
+
+    #title2 {
+        font-size: 300%;
+        margin-bottom: 40px;
+    }
+
+    .b_ticket {
+        min-width: 200px;
+        height: 180px;
+        padding-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .t_spots{
+        margin-top: 40px;
+    }
+    .t_spotselect{
+        font-size: small;
+    }
+    .t_bookbutton{
+        font-size: small;
+    }
+
+}

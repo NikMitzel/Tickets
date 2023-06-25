@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="src\Icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <title>Ticket - Admin</title>
+    <link rel="stylesheet" href="CSS\BookedTickets.css">
+    <script type="application/javascript" src="cookies.js"></script>
+</head>
+
+<body onload="initpage()">
+    <div id="outercontainer">
+        <div id="content">
+            <header>
+                <a href="BookTickets.html"><img id="h_logo" src="src\Icon.png"></a>
+                <a id="h_myticketbutton" href="Admin_addTickets.html">Add Tickets</a>
+                <div>
+                    <div>
+                        <button id="h_accountbutton">
+                            <p id="h_name">
+                                ADMIN
+                            </p> <img src="src\Login Icon.png">
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <div>
+                <p id="title">Booked Tickets </p>
+            </div>
+
+            <div id="b_main">
+                <div><input id="b_dateselect" type="date" onchange="handler(event);"></div>
+                <div id="b_tickets">
+                    <script>
+                        document.getElementById('b_dateselect').valueAsDate = new Date();
+
+                        function handler(e) {
+                            initpage()
+                        }
+
+                        let https = "http://localhost:8080/api/";
+                        function send(method, apiSection, data, callback) {
+                            let xhr = new XMLHttpRequest();
+                            xhr.open(method, https + apiSection, true);
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === 4) {
+                                    if (xhr.status === 200) {
+                                        callback(xhr.responseText)
+                                    } else {
+                                        callback(xhr.status)
+                                    }
+                                }
+                            }
+                            xhr.setRequestHeader("Content-Type", "application/json");
+                            xhr.send(data);
+                        }
+
+
+                        function initpage() {
+                            var x = document.getElementById("b_dateselect").value;
+                            var i = 0;
+                            send("GET", "ticket/booked/" + x, "", function (response) {
+                                let data = JSON.parse(response)
+                                let ticketsdiv = document.getElementById("b_tickets")
+                                ticketsdiv.innerHTML = ""
+                                data.forEach(element => {
+                                    const id = element.id;
+                                    const dateTime = new Date(element.date);
+
+                                    const year = dateTime.getFullYear();
+                                    const month = (dateTime.getMonth() + 1).toString().padStart(2, '0');
+                                    const day = dateTime.getDate();
+                                    const hour = dateTime.getHours();
+                                    const min = dateTime.getMinutes().toString().padStart(2, '0');
+                                    const email = element.userEmail;
+                                    const code =  element.code;
+                                    ticketsdiv.innerHTML += "<div id=\"b_ticket\" class=\"b_ticket\"> <p class=\"t_time\">" + hour + ":" + min + " </p><p class=\"t_date\">" + day + "/" + month + "/" + year + "</p> <p class=\"t_bookinfo\"> Booked by: " + email + " </p> <p class=\"t_bookinfo\"> Code: " + code + "</p> <button onclick=\"book("+id+");\" type=submit id=\"calcelbutton\" class=\"t_cacelbutton\" value=\"BOOK\"> Cancel </button></div>"
+                                });
+                                if (data == ""){
+                                    ticketsdiv.innerHTML = "<div id=\"no_ticket\">no tickets booked for selected date</div>"
+                                }
+                            })
+                        }
+                        
+                        function book(id){
+                            var email = getCookie("email");
+                            let data = {
+                                "email": email,
+                                "id": id
+                            }
+                            send("POST", "ticket/cancel", JSON.stringify(data), function (response) {
+                                initpage();
+                            })
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div>
+            <a href="/ref/imprint.html" class="f_text">Imprint</a>
+            <a href="/ref/privacypolice.html" class="f_text">Privacy Policy</a>
+        </div>
+        <div class="f_text">© 2023</div>
+    </footer>
+</body>
+
+</html>

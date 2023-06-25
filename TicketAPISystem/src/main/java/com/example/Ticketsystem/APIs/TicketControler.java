@@ -37,7 +37,7 @@ public class TicketControler{
         return ticketService.getMyTickets(new User("", new Date(),email,""));
     }
 
-    //
+    //woeking
     @PostMapping(path = "/cancel")
     public void cancelTickets(@RequestBody Canceler json){
         ticketService.canelTicket(json.getId());
@@ -50,6 +50,7 @@ public class TicketControler{
     }
 
 
+    //working
     @GetMapping(path = "booked/{date}")
     public List<Ticket> getBookedTicketsAt(@PathVariable("date") String date) {
         Date date1;
@@ -63,29 +64,8 @@ public class TicketControler{
 
 
 
-    @PostMapping(path = "add/{startDate}_{endDate}_{frequency}")
-    public void addTickets(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, @PathVariable("frequency") int frequency){
-        Date startdate1;
-        Date enddate2;
-        try {
-            startdate1 = new SimpleDateFormat("yyyy-MM-dd").parse(startdate);
-            enddate2 = new SimpleDateFormat("yyyy-MM-dd").parse(enddate);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        ticketService.createTickets(startdate1, enddate2, frequency);
+    @PostMapping("/add")
+    public void register(@RequestBody AddTicket json){
+        ticketService.createTickets(json.getStart(),json.getEnd(), json.getFreqency());
     }
-
-    @PostMapping(path = "add/{date}")
-    public void addTicket(@PathVariable("date") String date){
-        Date date1;
-        try {
-            date1 = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        ticketService.createTicket(date1);
-    }
-
-
 }
