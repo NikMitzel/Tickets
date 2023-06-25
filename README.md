@@ -10,15 +10,23 @@ Um das Programm nutzen zu können, muss eine MySQL Datenbank vorhanden sein. Das
 Wichtig ist, dass die ConnectorJ richtig eingebunden ist.
 
 ### Programm Starten
-#### V1 Consolenversion
+#### V1 Consolenversion(JDK 18)
 Im ersten Sprint wurde eine Consolenversion Programmes erstellt, in welche die DB Logik schon vorhanden ist. Über ein kleines Consolenmenü kann der User hier das Programm nutzen: Dazu muss nur die Klasse _ConsoleVersion.java ausgeführt werden. (Die DB muss bereits laufen)
 
-#### V2 Browser UI Version 
+Beispiel:
+![Consol IMG](https://github.com/NikMitzel/Tickets/blob/main/imgV1.jpg?raw=true) 
+
+#### V2 Browser UI Version(JDK 17)
 Im zweiten Sprint wurde eine grafische Oberfläche erstellt. Um das Programm zu nutzen, muss die TicketsystemApplicationTests.java ausgeführt werden. Nun kann das System in Frontend verwendet werden. (Die DB muss bereits laufen). Das System hat nun 2 Seiten, um es anzusprechen:
 
 1.User Seite: Hier können Tickets gebucht, sowie storniert werden. (starte Frontend/Login.html)
+Beispiel:
+![UI IMG](https://github.com/NikMitzel/Tickets/blob/main/imgV2_1_1.jpg?raw=true) 
+![UI2 IMG](https://github.com/NikMitzel/Tickets/blob/main/imgV2_1_2.jpg?raw=true) 
 
 2.Admin Seite: Hier können gebuchte Tickets eingesehen werden, sowie neue angelegt werden. (starte Admin_BookedTickets.html)
+Beispiel:
+![UIAdmin IMG](https://github.com/NikMitzel/Tickets/blob/main/imgV2_2.jpg?raw=true) 
 
 ## Programm Struktur/Code
 ### Layer Struktur
