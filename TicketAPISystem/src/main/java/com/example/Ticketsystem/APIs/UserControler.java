@@ -1,15 +1,16 @@
 package com.example.Ticketsystem.APIs;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @RestController
-@RequestMapping(path = "api/user")
+@RequestMapping(path = "/api/user")
 public class UserControler {
+    private static final Gson gson = new Gson();
     private final UserService userService;
 
     @Autowired
@@ -17,35 +18,31 @@ public class UserControler {
         this.userService = userService;
     }
 
-    @GetMapping(path = "checkLogin/{email}_{password}")
-    public boolean checkLoginPassword(@PathVariable("email") String email, @PathVariable("password") String password){
-        return userService.DBCheckLoginPassword(email,password);
+
+    //working
+    @PostMapping("/checkLogin")
+    public ResponseEntity<Boolean> checkLoginPassword(@RequestBody Login json){
+
+        boolean b = userService.DBCheckLoginPassword(json.getEmail(), json.getPassword());
+
+        return new ResponseEntity<>(b, HttpStatus.OK);
     }
 
-    @PostMapping(path = "get/{email}")
-    public void getUser(@PathVariable("email") String email){
-        userService.DBGetUser(email);
+    //working
+    @PostMapping("/register")
+    public void register(@RequestBody Register json){
+        userService.createUser(new User(json.getName(),json.getBirthdate(), json.getEmail(), json.getPassword()));
     }
 
-    @PostMapping(path = "create/{name}_{birthdate}_{email}_{password}")
-    public void createUser(@PathVariable("name") String name,@PathVariable("birthdate") String birthdate,@PathVariable("email") String email, @PathVariable("password") String password){
-        Date date1;
-        try {
-            date1 = new SimpleDateFormat("yyyy-MM-dd").parse(birthdate);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        userService.createUser(new User(name,date1,email,password));
+    //working
+    @GetMapping("/getName/{email}")
+    public User getName(@PathVariable("email") String email){
+        return userService.DBGetUser(email);
     }
 
-    @PostMapping(path = "update/{name}_{birthdate}_{email}_{password}")
-    public void updateUser(@PathVariable("name") String name,@PathVariable("birthdate") String birthdate,@PathVariable("email") String email, @PathVariable("password") String password){
-        Date date1;
-        try {
-            date1 = new SimpleDateFormat("yyyy-MM-dd").parse(birthdate);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        userService.updateUser(new User(name,date1,email,password));
+    //working
+    @PostMapping(path = "/update")
+    public void updateUser(@RequestBody UpdateUser json){
+        userService.updateUser(new User(json.getName(),json.getBirthdate(), json.getEmail(), json.getPassword()));
     }
 }

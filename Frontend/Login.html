@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <title>Ticket-Login</title>
     <link rel="stylesheet" href="CSS/LoginStyles.css">
+    <script type="application/javascript" src="cookies.js"></script>
 </head>
 
 <body>
@@ -19,29 +20,105 @@
             <div id="outerdiv">
                 <div id="logindiv">
                     <div class=" title">Login</div>
-                    <form action="/login" method="post">
-                        <div><input type="email" name="E-Mail" placeholder="E-Mail"></div>
-                        <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
-                        <div><input class="d_submit" type="submit" value="Login"></div>
+                    <form onsubmit="return false">
+                        <div><input id="email" type="text" name="E-Mail" placeholder="E-Mail"></div>
+                        <div><input id="password" type="password" name="Passwort" placeholder="Passwort"></div>
+                        <div><button class="d_submit" id="submitLogin">Login</button></div>
+                        <div id="error_message"></div>
                     </form>
+                    <script>
+                        let https = "http://localhost:8080/api/";
+                        function send(method, apiSection, data, callback) {
+                            let xhr = new XMLHttpRequest();
+                            xhr.open(method, https + apiSection, true);
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === 4) {
+                                    if (xhr.status === 200) {
+                                        callback(xhr.responseText)
+                                    } else {
+                                        callback(xhr.status)
+                                    }
+                                }
+                            }
+                            xhr.setRequestHeader("Content-Type", "application/json");
+                            xhr.send(data);
+                        }
+
+                        document.getElementById('submitLogin').onclick = function () {
+                            login();
+                        };
+
+                        function login() {
+                            let error_message = document.getElementById("error_message")
+                            var email = document.getElementById('email').value;
+                            var password = document.getElementById('password').value;
+                            let data = {
+                                "email": email,
+                                "password": password
+                            }
+                            send("POST", "user/checkLogin", JSON.stringify(data), function (response) {
+                                console.log(response)
+                                if (response === "true") {
+                                    setCookie("email", email)
+                                    window.open("BookTickets.html", "_self")
+                                }else if (response === "false"){   
+                                    error_message.innerHTML = "Email or Password incorrect"
+                                }
+                            })
+                        }
+                    </script>
                 </div>
                 <div id="registerdiv">
                     <div class=" title">Register</div>
-                    <form>
-                        <div><input type="text" name="Name" placeholder="Name"></div>
-                        <div><input id="d_dateselect" type="text" placeholder="Bithdate" onfocus="(this.type='date')"></div>
-                        <div><input type="email" name="E-Mail" placeholder="E-Mail"></div>
-                        <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
-                        <div><input class="d_submit" type="submit" value="Register"></div>
+                    <form onsubmit="return false">
+                        <div><input id="name" type="text" name="name" placeholder="Name"></div>
+                        <div><input id="d_dateselect" type="text" name="birthdate" placeholder="Bithdate" onfocus="(this.type='date')"></div>
+                        <div><input id="emailr" type="text" name="emailr" placeholder="E-Mail"></div>
+                        <div><input id="passwordr" type="password" name="passwordr" placeholder="Passwort" ></div>
+                        <div><button class="d_submit" id="submitRegister">Register</button></div>
                     </form>
+                    <script>
+                        let https2 = "http://localhost:8080/api/";
+                        function send(method, apiSection, data, callback) {
+                            let xhr = new XMLHttpRequest();
+                            xhr.open(method, https2 + apiSection, true);
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === 4) {
+                                    if (xhr.status === 200) {
+                                        callback(xhr.responseText)
+                                    } else {
+                                        callback(xhr.status)
+                                    }
+                                }
+                            }
+                            xhr.setRequestHeader("Content-Type", "application/json");
+                            xhr.send(data);
+                        }
+
+                        document.getElementById('submitRegister').onclick = function () {
+                            register();
+                        };
+
+                        function register() {
+                            var name = document.getElementById('name').value;
+                            var birthdate = document.getElementById('d_dateselect').value;
+                            var email = document.getElementById('emailr').value;
+                            var password = document.getElementById('passwordr').value;
+                            let data = {
+                                "name": name,
+                                "birthdate": birthdate,
+                                "email": email,
+                                "password": password
+                            }
+                            send("POST", "user/register", JSON.stringify(data), function (response) {
+                                window.open("Login.html", "_self")
+                            })
+                        }
+                    </script>
                 </div>
             </div>
 
 
-            
-
-
-            
         </div>
     </div>
     <footer>
@@ -53,4 +130,5 @@
     </footer>
 
 </body>
+
 </html>

@@ -108,6 +108,11 @@ input:focus {
     box-shadow: inset 0px -3px 2px rgba(0, 0, 0, 0.25);
 }
 
+#error{
+    color: red;
+    padding: 10px;
+}
+
 .d_title {
     text-align: center;
     margin-bottom: 15px;
@@ -119,6 +124,14 @@ input:focus {
 }
 
 .d_submit {
+    font-size: 130%;
+    padding: 10px;
+    background-color: #F4F4F4;
+    border: none;
+    margin: 10px;
+    box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.25);
+    user-select: None;
+    transition: box-shadow 0.3s;
     width: 94%;
     padding: 10px;
     margin-top: 20px;
@@ -222,6 +235,14 @@ input:focus {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+
+#no_ticket{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 200%;
+    color: gray;
+}
 
 
 /*footer*/

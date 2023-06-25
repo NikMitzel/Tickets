@@ -19,6 +19,7 @@ public class TicketControler{
         this.ticketService = ticketService;
     }
 
+    //working
     @GetMapping(path = "open/{date}")
     public List<Ticket> getOpenTicketsAt(@PathVariable("date") String date) {
         Date date1;
@@ -29,6 +30,25 @@ public class TicketControler{
         }
         return ticketService.getOpenTicketsAt(date1);
     }
+
+    //working
+    @GetMapping(path = "my/{email}")
+    public List<Ticket>  getMyTickets(@PathVariable("email") String email){
+        return ticketService.getMyTickets(new User("", new Date(),email,""));
+    }
+
+    //
+    @PostMapping(path = "/cancel")
+    public void cancelTickets(@RequestBody Canceler json){
+        ticketService.canelTicket(json.getId());
+    }
+
+    //working
+    @PostMapping(path = "book")
+    public void bookTickets(@RequestBody Book json){
+        ticketService.bookTicket(json.getEmail(), json.getId());
+    }
+
 
     @GetMapping(path = "booked/{date}")
     public List<Ticket> getBookedTicketsAt(@PathVariable("date") String date) {
@@ -41,10 +61,7 @@ public class TicketControler{
         return ticketService.getBookedTicket(date1);
     }
 
-    @GetMapping(path = "my/{email}")
-    public List<Ticket>  getMyTickets(@PathVariable("email") String email){
-        return ticketService.getMyTickets(new User("", new Date(),email,""));
-    }
+
 
     @PostMapping(path = "add/{startDate}_{endDate}_{frequency}")
     public void addTickets(@PathVariable("startDate") String startdate, @PathVariable("endDate") String enddate, @PathVariable("frequency") int frequency){
@@ -70,13 +87,5 @@ public class TicketControler{
         ticketService.createTicket(date1);
     }
 
-    @PostMapping(path = "cancel/{id}")
-    public void cancelTickets(@PathVariable("id") int id){
-        ticketService.canelTicket(id);
-    }
 
-    @PostMapping(path = "cancel/{id}_{email}")
-    public void bookTickets(@PathVariable("id") int id, @PathVariable("email") String email){
-        ticketService.bookTicket(email, id);
-    }
 }

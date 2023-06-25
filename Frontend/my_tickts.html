@@ -1,92 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="shortcut icon" href="src\Icon.png" type="image/x-icon">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-        <title>Ticket - Home</title>
-        <link rel="stylesheet" href="CSS\MyTicketsStyle.css">
-        
-    </head>
-    <body>
-        <div id="outercontainer">
-            <div id="content">
-                <header>
-                    <a href="BookTickets.html"><img id="h_logo" src="src\Icon.png" ></a>
-                    <div>
-                        <div >
-                            <button data-open-model-account id="h_accountbutton">
-                                <p id="h_name">[name]</p> <img src="src\Login Icon.png">
-                            </button>
-                            <dialog data-model-account>
-                                <div class="d_title">Account</div>
-                                <form>
-                                    <div><input type="text" name="Name" placeholder="Name"></div>
-                                    <div><input id="d_dateselect" type="text" placeholder="Bithdate" onfocus="(this.type='date')"></div>
-                                    <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
-                                    <div><input class="d_submit" type="submit" value="Register"></div>
-                                </form>
-                            </dialog>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="src\Icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <title>Ticket - Home</title>
+    <link rel="stylesheet" href="CSS\MyTicketsStyle.css">
+    <script type="application/javascript" src="cookies.js"></script>
+</head>
 
-                            <script>
-                                const openButtonAccount = document.querySelector("[data-open-model-account]")
-                                const modelAccount = document.querySelector("[data-model-account]")
-                                openButtonAccount.addEventListener("click", () => {
-                                    modelAccount.showModal()
-                                })
-                                
-                                
-                                modelAccount.addEventListener("click", e => {
-                                    const dialogDimensions = modelAccount.getBoundingClientRect()
-                                    if (
-                                        e.clientX < (dialogDimensions.left - 80) ||
-                                        e.clientX > dialogDimensions.right ||
-                                        e.clientY < dialogDimensions.top ||
-                                        e.clientY > dialogDimensions.bottom
-                                    ) {
-                                        modelAccount.close()
-                                    }
-                                })
-                                
-                            </script>
-
-
-                        </div>
-                    </div>
-                </header>
+<body onload="initpage()">
+    <div id="outercontainer">
+        <div id="content">
+            <header>
+                <a href="BookTickets.html"><img id="h_logo" src="src\Icon.png"></a>
                 <div>
-                    <p id="title">My Tickets </p>
-                </div>
+                    <div>
+                        <button data-open-model-account id="h_accountbutton">
+                            <p id="h_name">
+                                <script>
 
-                <div id="b_main">
-                    <div id="b_tickets">
-                        <div id="b_ticket" class="b_ticket">
-                            <p class="t_time">6:10</p>
-                            <p class="t_date">dd /mm / yyy</p>
-                            <img class="t_QR-Code" src="https://chart.googleapis.com/chart?cht=qr&chl=DEINE_ZEICHENKETTE&chs=200x200" alt="QR-Code">
-                            <p class="t_code">skewow</p>
-                            <input class="t_cancelbutton" type="button" value="CANCEL">
-                        </div>
-                        <div id="b_ticket" class="b_ticket">
-                            <p class="t_time">6:10</p>
-                            <p class="t_date">dd /mm / yyy</p>
-                            <img class="t_QR-Code" src="https://chart.googleapis.com/chart?cht=qr&chl=DEINE_ZEICasdasdHENKETTE&chs=200x200" alt="QR-Code">
-                            <p class="t_code">skewow</p>
-                            <input class="t_cancelbutton" type="button" value="CANCEL">
-                        </div>
+                                    let h_name = document.getElementById("h_name");
+                                    let https2 = "http://localhost:8080/api/";
+                                    function send(method, apiSection, data, callback) {
+                                        let xhr = new XMLHttpRequest();
+                                        xhr.open(method, https2 + apiSection, true);
+                                        xhr.onreadystatechange = function () {
+                                            if (xhr.readyState === 4) {
+                                                if (xhr.status === 200) {
+                                                    callback(xhr.responseText)
+                                                } else {
+                                                    callback(xhr.status)
+                                                }
+                                            }
+                                        }
+                                        xhr.setRequestHeader("Content-Type", "application/json");
+                                        xhr.send(data);
+                                    }
+
+                                    function name() {
+                                        send("GET", "user/getName/" + getCookie("email"), "", function (response) {
+                                            let data = JSON.parse(response)
+                                            h_name.innerHTML = data.name;
+                                        })
+                                    }
+
+                                    name();
+                                </script>
+                            </p> <img src="src\Login Icon.png">
+                        </button>
+                        <dialog data-model-account>
+                            <div class="d_title">Account</div>
+                            <form onsubmit="return false">
+                                <div><input id="name" type="text" name="Name" placeholder="Name"></div>
+                                <div><input id="d_dateselect" type="text" placeholder="Bithdate"
+                                        onfocus="(this.type='date')"></div>
+                                <div><input id="password" type="password" name="Passwort" placeholder="Passwort"
+                                        minlength="8"></div>
+                                <div><button id="submit" class="d_submit"> Update</button></div>
+                                <div id="error"></div>
+                            </form>
+                        </dialog>
+
+
+                        <script>
+                            const openButtonAccount = document.querySelector("[data-open-model-account]")
+                            const modelAccount = document.querySelector("[data-model-account]")
+                            openButtonAccount.addEventListener("click", () => {
+                                modelAccount.showModal()
+                            })
+
+
+                            modelAccount.addEventListener("click", e => {
+                                const dialogDimensions = modelAccount.getBoundingClientRect()
+                                if (
+                                    e.clientX < (dialogDimensions.left - 80) ||
+                                    e.clientX > dialogDimensions.right ||
+                                    e.clientY < dialogDimensions.top ||
+                                    e.clientY > dialogDimensions.bottom
+                                ) {
+                                    modelAccount.close()
+                                }
+                            })
+
+                            let https3 = "http://localhost:8080/api/";
+                            function send(method, apiSection, data, callback) {
+                                let xhr = new XMLHttpRequest();
+                                xhr.open(method, https3 + apiSection, true);
+                                xhr.onreadystatechange = function () {
+                                    if (xhr.readyState === 4) {
+                                        if (xhr.status === 200) {
+                                            callback(xhr.responseText)
+                                        } else {
+                                            callback(xhr.status)
+                                        }
+                                    }
+                                }
+                                xhr.setRequestHeader("Content-Type", "application/json");
+                                xhr.send(data);
+                            }
+
+                            document.getElementById('submit').onclick = function () {
+                                update();
+                            };
+
+                            function update() {
+                                var name = document.getElementById('name').value;
+                                var birthdate = document.getElementById('d_dateselect').value;
+                                var email = getCookie("email");
+                                var password = document.getElementById('password').value;
+                                let data = {
+                                    "name": name,
+                                    "birthdate": birthdate,
+                                    "email": email,
+                                    "password": password
+                                }
+                                if (name != "" && birthdate != "" && password != "") {
+                                    send("POST", "user/update", JSON.stringify(data), function (response) {
+                                        window.open("BookTickets.html", "_self")
+                                    })
+                                } else {
+                                    let error_message = document.getElementById("error")
+                                    error_message.innerHTML = "fill all inputs"
+                                }
+                            }
+                        </script>
+
                     </div>
+                </div>
+            </header>
+            <div>
+                <p id="title">My Tickets </p>
+            </div>
+
+            <div id="b_main">
+                <div id="b_tickets">
+                    <script>
+                        let https = "http://localhost:8080/api/";
+                        function send(method, apiSection, data, callback) {
+                            let xhr = new XMLHttpRequest();
+                            xhr.open(method, https + apiSection, true);
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === 4) {
+                                    if (xhr.status === 200) {
+                                        callback(xhr.responseText)
+                                    } else {
+                                        callback(xhr.status)
+                                    }
+                                }
+                            }
+                            xhr.setRequestHeader("Content-Type", "application/json");
+                            xhr.send(data);
+                        }
+
+                        function initpage() {
+                            send("GET", "ticket/my/" + getCookie("email"), "", function (response) {
+                                let data = JSON.parse(response)
+                                let b_tickets = document.getElementById("b_tickets")
+                                b_tickets.innerHTML = ""
+                                data.forEach(element => {
+                                    const id = element.id;
+                                    const dateTime = new Date(element.date);
+
+                                    const year = dateTime.getFullYear();
+                                    const month = (dateTime.getMonth() + 1).toString().padStart(2, '0');
+                                    const day = dateTime.getDate();
+                                    const hour = dateTime.getHours();
+                                    const min = dateTime.getMinutes().toString().padStart(2, '0');
+                                    const code = element.code;
+
+                                    b_tickets.innerHTML += "<div id=\"b_ticket\" class=\"b_ticket\"> <p class=\"t_time\">" + hour + ":" + min + "</p> <p class=\"t_date\">" + day + "/" + month + "/" + year + "</p><img class=\"t_QR-Code\" src=\"https://chart.googleapis.com/chart?cht=qr&chl=" + code + "&chs=200x200\" alt=\"QR-Code\"><p class=\"t_code\">" + code + "</p><button  onclick=\"cancel("+id+");\" class=\"t_cancelbutton\" >CANCEL</button></div>"
+                                });
+                                if (data == ""){
+                                    ticketsdiv.innerHTML = "<div id=\"no_ticket\">you have no booked tickets</div>"
+                                }
+                            })
+                        }
+                        function cancel(id) {
+                            var email = getCookie("email");
+                            let data = {
+                                "email": email,
+                                "id": id
+                            }
+                            send("POST", "ticket/cancel", JSON.stringify(data), function (response) {
+                                initpage();
+                            })
+                        }
+                    </script>
+
                 </div>
             </div>
         </div>
-        <footer>
-            <div>
-                <a href="/ref/imprint.html" class="f_text">Imprint</a>
-                <a href="/ref/privacypolice.html" class="f_text">Privacy Policy</a>
-            </div>
-            <div class="f_text">© 2023</div>
-        </footer>
-    </body>
+    </div>
+    <footer>
+        <div>
+            <a href="/ref/imprint.html" class="f_text">Imprint</a>
+            <a href="/ref/privacypolice.html" class="f_text">Privacy Policy</a>
+        </div>
+        <div class="f_text">© 2023</div>
+    </footer>
+</body>
+
 </html>

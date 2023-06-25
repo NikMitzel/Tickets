@@ -1,22 +1,14 @@
 package com.example.Ticketsystem.APIs;
-import java.util.Date;
 
-public class User {
+public class Register {
     private String name;
-    private Date birthdate;
+    private String birthdate;
     private String email;
     private String password;
 
-    // Konstruktor
-    public User(String name, Date birthdate, String email, String password) {
+    public Register(String name, String birthdate, String email, String password) {
         this.name = name;
         this.birthdate = birthdate;
-        this.email = email;
-        this.password = password;
-    }
-    public User(String name, String birthdate, String email, String password) {
-        this.name = name;
-        this.birthdate = java.sql.Date.valueOf(birthdate);
         this.email = email;
         this.password = password;
     }
@@ -25,7 +17,7 @@ public class User {
         return name;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
@@ -37,4 +29,3 @@ public class User {
         return password;
     }
 }
-

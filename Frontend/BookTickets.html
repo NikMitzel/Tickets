@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <title>Ticket - Home</title>
     <link rel="stylesheet" href="CSS\BookTicketsStyle.css">
+    <script type="application/javascript" src="cookies.js"></script>
 </head>
 
 <body onload="initpage()">
@@ -20,16 +21,48 @@
                 <div>
                     <div>
                         <button data-open-model-account id="h_accountbutton">
-                            <p id="h_name">[name]</p> <img src="src\Login Icon.png">
+                            <p id="h_name">
+                                <script>
+
+                                    let h_name = document.getElementById("h_name");
+                                    let https2 = "http://localhost:8080/api/";
+                                    function send(method, apiSection, data, callback) {
+                                        let xhr = new XMLHttpRequest();
+                                        xhr.open(method, https2 + apiSection, true);
+                                        xhr.onreadystatechange = function () {
+                                            if (xhr.readyState === 4) {
+                                                if (xhr.status === 200) {
+                                                    callback(xhr.responseText)
+                                                } else {
+                                                    callback(xhr.status)
+                                                }
+                                            }
+                                        }
+                                        xhr.setRequestHeader("Content-Type", "application/json");
+                                        xhr.send(data);
+                                    }
+
+                                    function name() {
+                                        send("GET", "user/getName/" + getCookie("email"), "", function (response) {
+                                            let data = JSON.parse(response)
+                                            h_name.innerHTML = data.name;
+                                        })
+                                    }
+
+                                    name();
+                                </script>
+                            </p> <img src="src\Login Icon.png">
                         </button>
                         <dialog data-model-account>
                             <div class="d_title">Account</div>
-                            <form>
-                                <div><input type="text" name="Name" placeholder="Name"></div>
+                            <form onsubmit="return false">
+                                <div><input id="name" type="text" name="Name" placeholder="Name"></div>
                                 <div><input id="d_dateselect" type="text" placeholder="Bithdate"
                                         onfocus="(this.type='date')"></div>
-                                <div><input type="password" name="Passwort" placeholder="Passwort" minlength="8"></div>
-                                <div><input class="d_submit" type="submit" value="Register"></div>
+                                <div><input id="password" type="password" name="Passwort" placeholder="Passwort"
+                                        minlength="8"></div>
+                                <div><button id="submit" class="d_submit"> Update</button></div>
+                                <div id="error"></div>
                             </form>
                         </dialog>
 
@@ -54,6 +87,47 @@
                                 }
                             })
 
+                            let https3 = "http://localhost:8080/api/";
+                            function send(method, apiSection, data, callback) {
+                                let xhr = new XMLHttpRequest();
+                                xhr.open(method, https3 + apiSection, true);
+                                xhr.onreadystatechange = function () {
+                                    if (xhr.readyState === 4) {
+                                        if (xhr.status === 200) {
+                                            callback(xhr.responseText)
+                                        } else {
+                                            callback(xhr.status)
+                                        }
+                                    }
+                                }
+                                xhr.setRequestHeader("Content-Type", "application/json");
+                                xhr.send(data);
+                            }
+
+                            document.getElementById('submit').onclick = function () {
+                                update();
+                            };
+
+                            function update() {
+                                var name = document.getElementById('name').value;
+                                var birthdate = document.getElementById('d_dateselect').value;
+                                var email = getCookie("email");
+                                var password = document.getElementById('password').value;
+                                let data = {
+                                    "name": name,
+                                    "birthdate": birthdate,
+                                    "email": email,
+                                    "password": password
+                                }
+                                if (name != "" && birthdate != "" && password != "") {
+                                    send("POST", "user/update", JSON.stringify(data), function (response) {
+                                        window.open("BookTickets.html", "_self")
+                                    })
+                                } else {
+                                    let error_message = document.getElementById("error")
+                                    error_message.innerHTML = "fill all inputs"
+                                }
+                            }
                         </script>
 
 
@@ -66,11 +140,14 @@
             </div>
 
             <div id="b_main">
-                <div><input id="b_dateselect" type="date"></div> fix pls
+                <div><input id="b_dateselect" type="date" onchange="handler(event);"></div>
                 <div id="b_tickets">
                     <script>
                         document.getElementById('b_dateselect').valueAsDate = new Date();
-                        var x = document.getElementById("b_dateselect").value;
+
+                        function handler(e) {
+                            initpage()
+                        }
 
                         let https = "http://localhost:8080/api/";
                         function send(method, apiSection, data, callback) {
@@ -89,12 +166,16 @@
                             xhr.send(data);
                         }
 
+
                         function initpage() {
+                            var x = document.getElementById("b_dateselect").value;
+                            var i = 0;
                             send("GET", "ticket/open/" + x, "", function (response) {
                                 let data = JSON.parse(response)
                                 let ticketsdiv = document.getElementById("b_tickets")
                                 ticketsdiv.innerHTML = ""
                                 data.forEach(element => {
+                                    const id = element.id;
                                     const dateTime = new Date(element.date);
 
                                     const year = dateTime.getFullYear();
@@ -103,8 +184,22 @@
                                     const hour = dateTime.getHours();
                                     const min = dateTime.getMinutes().toString().padStart(2, '0');
 
-                                    ticketsdiv.innerHTML += "<div id=\"b_ticket\" class=\"b_ticket\"> <p class=\"t_time\">" + hour + ":" + min + " </p><p class=\"t_date\">" + day+"/" + month+"/" + year + "</p><button class=\"t_bookbutton\">Book</button></div>"
+                                    ticketsdiv.innerHTML += "<div id=\"b_ticket\" class=\"b_ticket\"> <p class=\"t_time\">" + hour + ":" + min + " </p><p class=\"t_date\">" + day + "/" + month + "/" + year + "</p><button onclick=\"book("+id+");\" type=submit id=\"bookbutton\" class=\"t_bookbutton\" value=\"BOOK\"> Book </button></div>"
                                 });
+                                if (data == ""){
+                                    ticketsdiv.innerHTML = "<div id=\"no_ticket\">no ticket for selected date</div>"
+                                }
+                            })
+                        }
+                        
+                        function book(id){
+                            var email = getCookie("email");
+                            let data = {
+                                "email": email,
+                                "id": id
+                            }
+                            send("POST", "ticket/book", JSON.stringify(data), function (response) {
+                                initpage();
                             })
                         }
                     </script>
@@ -121,6 +216,6 @@
         </div>
         <div class="f_text">© 2023</div>
     </footer>
-</body>
+</body>78
 
 </html>
