@@ -5,24 +5,21 @@ Das vorliegende Ticketsystem ist im Rahmen eines Schulprojektes, beispielhaftes 
 ## Voraussetzungen für das Programm -> Starten des Programmes 
 
 ### MySQL DB
-Um das Programm nutzen zu können, muss eine MySQL Datenbank vorhanden sein. Das Backend kreiert entsprechende Tabellen, welche für das System genutzt werden. Es muss jedoch eine Datenbank mit dem Namen Ticketsystem angelegt sein, welche das Programm frei verwalten kann. Standardmäßig ist der Username:root, Passwort:root8 und die Adresse ein localhost auf Port 3306. Bei Bedarf kann dies im Backend in der DBManager class angepasst werden.
-
-Wichtig ist, dass die ConnectorJ richtig eingebunden ist.
-
+Um das Programm nutzen zu können, muss eine MySQL Datenbank vorhanden sein. Das Backend kreiert entsprechende Tabellen, welche für das System genutzt werden. Es muss jedoch eine Datenbank mit dem Namen Ticketsystem angelegt sein, welche das Programm frei verwalten kann. Standardmäßig ist der Username:root, Passwort:root8 und die Adresse ein localhost auf Port 3306. 
 
 Datenbankstruktur
 ![DB IMG](https://github.com/NikMitzel/Tickets/blob/main/img/imgDB.jpg?raw=true) 
 ### Programm Starten
 #### V1 Consolenversion(JDK 18)
-Im ersten Sprint wurde eine Consolenversion Programmes erstellt, in welche die DB Logik schon vorhanden ist. Über ein kleines Consolenmenü kann der User hier das Programm nutzen: Dazu muss nur die Klasse _ConsoleVersion.java ausgeführt werden. (Die DB muss bereits laufen) Beispiel:
+Im ersten Sprint wurde eine Consolenversion Programmes erstellt, in welche die DB Logik schon vorhanden ist. Über ein kleines Consolenmenü kann der User hier das Programm nutzen: Dazu muss nur die Klasse _ConsoleVersion.java ausgeführt werden. Das Projekt wurde in dem Sprint nicht exportiert, muss also in IntelliJ gestartet werden. (Die DB muss bereits laufen) Beispiel:
 
 
 ![Consol IMG](https://github.com/NikMitzel/Tickets/blob/main/img/imgV1.jpg?raw=true) 
 
 #### V2 Browser UI Version(JDK 17)
-Im zweiten Sprint wurde eine grafische Oberfläche erstellt. Um das Programm zu nutzen, muss die TicketsystemApplicationTests.java ausgeführt werden. Nun kann das System in Frontend verwendet werden. (Die DB muss bereits laufen). Das System hat nun 2 Seiten, um es anzusprechen:
+Im zweiten Sprint wurde eine grafische Oberfläche erstellt. Dieser Sprint kann über die exportierte java Datei gestartet werden(/Ticketsystem.jar).  Um das Programm zu nutzen, muss Java 17 installiert sein. Nun kann das System in Frontend verwendet werden. (Die DB muss bereits laufen). Das System hat nun 2 Seiten, um es anzusprechen:
 
-1.User Seite: Hier können Tickets gebucht, sowie storniert werden. (starte Frontend/Login.html)
+1.User Seite: Hier können Tickets gebucht, sowie storniert werden. (starte Frontend/Login.html) von dort aus kann der user durch das Programm navigiert werden.
 Beispiel:
 ![UI IMG](https://github.com/NikMitzel/Tickets/blob/main/img/imgV2_1_1.jpg?raw=true) 
 ![UI2 IMG](https://github.com/NikMitzel/Tickets/blob/main/img/imgV2_1_2.jpg?raw=true) 
@@ -32,6 +29,7 @@ Beispiel:
 ![UIAdmin IMG](https://github.com/NikMitzel/Tickets/blob/main/img/imgV2_2.jpg?raw=true) 
 
 ## Programm Struktur/Code
+Der backend Code lässt sich in den beiden Sprints unter /backend Code finden.
 ### Layer Struktur
 
 #### Layer 1 HTML, CSS,JS UI
